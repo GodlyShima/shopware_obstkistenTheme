@@ -3,8 +3,10 @@
 namespace WebefaceSixCategories\Core\Content\Cms;
 
 use Shopware\Core\Content\Cms\DataResolver\Element\AbstractCmsElementResolver;
+use Shopware\Core\Content\Cms\DataResolver\Element\ElementDataCollection;
+use Shopware\Core\Content\Cms\DataResolver\ResolverContext\ResolverContext;
+use Shopware\Core\Content\Cms\DataResolver\CriteriaCollection;
 use Shopware\Core\Content\Cms\CmsSlotEntity;
-use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -31,9 +33,9 @@ class WebefaceSixCategoriesCmsElementResolver extends AbstractCmsElementResolver
         return $criteriaCollection;
     }
 
-    public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, CriteriaCollection $criteriaCollection, Context $context): void
+    public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, ElementDataCollection $result): void
     {
-        $categories = $resolverContext->getEntityCollection('categories_' . $slot->getUniqueIdentifier());
+        $categories = $result->get('categories_' . $slot->getUniqueIdentifier());
 
         $slot->addData('categories', $categories);
     }
