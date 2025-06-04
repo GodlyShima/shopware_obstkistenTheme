@@ -1,0 +1,199 @@
+{% block element_oo_hero_slider %}
+    {% set config = element.config %}
+    {% set autoplay = config['oo-autoplay'].value %}
+    {% set slides = [] %}
+
+    {% for i in 1..3 %}
+        {% set desktopId = config['oo-image-' ~ i] is defined ? config['oo-image-' ~ i].value : null %}
+        {% set mobileId = config['oo-image-mobile-' ~ i] is defined ? config['oo-image-mobile-' ~ i].value : null %}
+        {% set desktopImage = desktopId ? getMediaById(desktopId) : null %}
+        {% set mobileImage = mobileId ? getMediaById(mobileId) : null %}
+
+        {% if desktopImage %}
+            {% set slides = slides|merge([{ 'desktop': desktopImage, 'mobile': mobileImage }]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% set slideCount = slides|length %}
+
+    {% if slideCount > 0 %}
+        <style>
+
+            .oo-hero-slide img {
+                aspect-ratio: auto; // oder z. B. 16 / 9;
+                display: block;
+            }
+
+            .oo-hero-slider-wrapper .slider-prev-btn,
+            .oo-hero-slider-wrapper .slider-next-btn {
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .oo-hero-slider-wrapper:hover .slider-prev-btn,
+            .oo-hero-slider-wrapper:hover .slider-next-btn {
+                opacity: 1;
+            }
+
+            @media (max-width: 767px) {
+                .slider-prev-btn, .slider-next-btn {
+                    display: none !important;
+                }
+            }
+
+            .oo-slider-indicators {
+                display: none;
+            }
+
+            @media (max-width: 767px) {
+                .oo-slider-indicators {
+                    display: flex;
+                    justify-content: center;
+                    gap: 8px;
+                    margin-top: 10px;
+                }
+
+                .oo-slider-indicators .dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ccc;
+                }
+
+                .oo-slider-indicators .dot.active {
+                    background: #000;
+                }
+            }
+        </style>
+
+        <div class="oo-hero-slider-wrapper" style="position: relative; overflow: hidden;border-radius:8px;">
+            <div class="oo-hero-slider-track" style="display: flex; transition: transform 0.5s ease; width: 100%;">
+                {% for slide in slides %}
+                    <div class="oo-hero-slide" style="min-width: 100%; box-sizing: border-box;">
+                        <picture>
+    {% if slide.mobile %}
+        <source
+            srcset="{{ slide.mobile.url }}"
+            media="(max-width: 767px)"
+            width="{{ slide.mobile.metaData.width }}"
+            height="{{ slide.mobile.metaData.height }}">
+    {% endif %}
+    <source
+        srcset="{{ slide.desktop.url }}"
+        media="(min-width: 768px)"
+        width="{{ slide.desktop.metaData.width }}"
+        height="{{ slide.desktop.metaData.height }}">
+
+    <img
+        src="{{ slide.desktop.url }}"
+        alt="{{ slide.desktop.fileName }}"
+        width="{{ slide.desktop.metaData.width }}"
+        height="{{ slide.desktop.metaData.height }}"
+        style="aspect-ratio: {{ media.metaData.width }}/{{ media.metaData.height }}; width: 100%; height: auto;"
+        loading="eager"
+        fetchpriority="high">
+</picture>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if slideCount > 1 %}
+                <div class="slider-prev-btn" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 999; cursor: pointer;">
+                    <i style="width: 56px; height: 56px; background: url(/dist/img/icon1.webp) no-repeat; display: inline-block;"></i>
+                </div>
+                <div class="slider-next-btn" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 999; cursor: pointer;">
+                    <i style="width: 56px; height: 56px; background: url(/dist/img/icon1.webp) no-repeat; display: inline-block; transform: rotate(180deg);"></i>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if slideCount > 1 %}
+            <div class="oo-slider-indicators">
+                {% for i in 0..(slideCount - 1) %}
+                    <div class="dot{% if i == 0 %} active{% endif %}"></div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const track = document.querySelector('.oo-hero-slider-track');
+                const slideElements = Array.from(document.querySelectorAll('.oo-hero-slide'));
+                const nextBtn = document.querySelector('.slider-next-btn');
+                const prevBtn = document.querySelector('.slider-prev-btn');
+                const indicators = document.querySelectorAll('.oo-slider-indicators .dot');
+                const realSlideCount = slideElements.length;
+
+                let currentIndex = 0;
+                let isTransitioning = false;
+                let autoplayInterval;
+
+                const firstSlideClone = slideElements[0].cloneNode(true);
+                track.appendChild(firstSlideClone);
+
+                function updateIndicators() {
+                    indicators.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === currentIndex % realSlideCount);
+                    });
+                }
+
+                function updateSlider(animate = true) {
+                    if (animate) {
+                        track.style.transition = 'transform 0.5s ease';
+                    } else {
+                        track.style.transition = 'none';
+                    }
+                    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    updateIndicators();
+                }
+
+                function handleTransitionEnd() {
+                    if (currentIndex === realSlideCount) {
+                        currentIndex = 0;
+                        updateSlider(false);
+                    }
+                }
+
+                function goToNext() {
+                    currentIndex = (currentIndex + 1) % realSlideCount;
+                    updateSlider();
+                }
+
+                function goToPrev() {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    if (currentIndex === 0) {
+                        currentIndex = realSlideCount - 1;
+                    } else {
+                        currentIndex--;
+                    }
+                    updateSlider();
+                    resetAutoplay();
+                    setTimeout(() => isTransitioning = false, 500);
+                }
+
+                function resetAutoplay() {
+                    if (autoplayInterval) {
+                        clearInterval(autoplayInterval);
+                        startAutoplay();
+                    }
+                }
+
+                function startAutoplay() {
+                    autoplayInterval = setInterval(() => {
+                        goToNext();
+                    }, 10000);
+                }
+
+                track.addEventListener('transitionend', handleTransitionEnd);
+                nextBtn?.addEventListener('click', goToNext);
+                prevBtn?.addEventListener('click', goToPrev);
+
+                {% if autoplay %}
+                    startAutoplay();
+                {% endif %}
+            });
+        </script>
+    {% endif %}
+{% endblock %}

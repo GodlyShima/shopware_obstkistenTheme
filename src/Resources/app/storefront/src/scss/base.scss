@@ -1,0 +1,204 @@
+/*
+
+  @shima - @2025
+  ----------------------
+  primary-color: #3c7c65
+
+*/
+
+@import 'layout/conversion_header';
+@import 'layout/cart_widget';
+@import 'layout/navbar_items';
+@import 'layout/footer';
+
+@import 'product/card.scss';
+@import 'product/page.scss';
+
+@import 'slider/item.scss';
+
+@import 'oo_elements/six_categories';
+
+@import 'checkout/checkout';
+
+@import 'layout/header';
+@import 'layout/mobile_header';
+
+@import 'layout/search';
+
+@import 'product/mobile_page';
+
+@import 'navbar/dropdown';
+
+@import 'layout/accountmenu';
+
+@import 'layout/container';
+
+@import 'layout/pagination';
+
+@import 'layout/sidebar';
+
+@import 'oo_elements/features';
+
+@import 'layout/badges';
+
+@import 'layout/input';
+
+@import 'layout/card';
+
+@import 'product/stock';
+@import 'product/delivery_time';
+@import 'product/share';
+
+/* DEFAULT VARIABLES */
+
+$primary-color: #3c7c65 !default;
+$secondary-color: #4C956C !default;
+
+/* ----------------- */
+
+body {
+    background: #fbfbfb;
+}
+
+.product-detail-delivery-information {
+  margin-bottom: 0 !important;
+}
+
+/*------------------------*/
+
+.cms-block-oo-features {
+    contain: layout style;
+}
+
+.cms-block img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* In deiner theme.scss oder custom.css */
+.cms-block img,
+.header-logo-main-img {
+    aspect-ratio: attr(width) / attr(height);
+    height: 100% !important;
+}
+
+
+
+/* Für das Logo */
+.header-logo-main-img {
+    width: 250px;
+    height: 100% !important;
+}
+
+.cms-block-oo-features {
+    min-height: 80px; /* Passe an deine tatsächliche Höhe an */
+}
+
+/*------------------------*/
+
+.tns-slide-cloned[aria-hidden="true"]:not(.tns-slide-active) {
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.rounded img.cms-image {
+  border-radius: 8px;
+}
+
+.overflow-vis {
+    overflow: visible !important;
+}
+
+.cms-section-sidebar-sidebar-content{ position: sticky; top: 0px; align-self: flex-start; height: auto; }
+
+.product-price .list-price {
+  color: #7d7c83;
+}
+
+
+.btn-plus {
+  border-radius: 0px 8px 8px 0px;
+  background: #ffffff;
+  border: 1px solid #cbcbcb;
+
+  &:hover {
+    background: #f1f1f1 !important;
+    border: 1px solid #cbcbcb !important;
+    border-left: 0 none !important;
+  }
+}
+
+.btn-minus {
+  border-radius: 8px 0px 0px 8px;
+  background: #ffffff;
+  border: 1px solid #cbcbcb;
+
+  &:hover {
+    background: #f1f1f1 !important;
+    border: 1px solid #cbcbcb !important;
+    border-right: 0 none !important;
+  }
+}
+
+.quantity-selector-group-input {
+  background: #ffffff;
+  border: 1px solid #cbcbcb;
+  border-left: none !important;
+  border-right: none !important;
+  
+  &:focus {
+    border-left: none !important;
+    border-right: none !important;
+  }
+}
+
+.scroll-up-container .scroll-up-button > button.btn {
+  background-color: #4C956C;
+  border: none;
+  border-radius: 8px;
+  width: 50px;
+  height: 45px;
+}
+
+.product-badges {
+  z-index: 0;
+}
+
+.rounded-image-slider {
+    .image-slider-container {
+      .image-slider-item-container {
+        .image-slider-item {
+          overflow: hidden; // wichtig für sichtbare Abrundung
+          border-radius: 20px;
+  
+          .image-slider-image {
+            border-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  .category-grid {
+    justify-content: space-between;
+  }
+  
+  .category-item {
+    flex: 0 0 calc(16.666% - 13.33px); // 6 Elemente pro Reihe
+    box-sizing: border-box;
+  }
+  
+
+  @include media-breakpoint-down(md) {
+    .category-item {
+      flex: 0 0 calc(33.333% - 10.66px);
+    }
+  }
+
+  .cms-section .cms-section-sidebar {
+    padding: 0;
+  }
+

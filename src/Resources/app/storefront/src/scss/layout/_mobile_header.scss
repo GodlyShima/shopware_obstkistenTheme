@@ -1,0 +1,28 @@
+@include media-breakpoint-down(sm) {
+    .header-wishlist {
+        display: none;
+    }
+
+    .cart-text-wrapper {
+        display: none;
+    }
+
+    .header-logo-col {
+        padding-bottom: 0;
+        margin-bottom: 10px;
+        margin-top: 0px;
+    }
+
+    .header-actions-col {
+        border-bottom: 1px solid #ededed;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .header-search-col .collapse:not(.show) {
+        display: none !important;
+    }
+}

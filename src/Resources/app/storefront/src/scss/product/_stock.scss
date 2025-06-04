@@ -1,0 +1,34 @@
+.stock-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 20px;
+
+		&::before {
+			content: '';
+			display: block;
+			border-radius: 50%;
+			flex-shrink: 0;
+			width: 20px;
+    	height: 20px;
+		}
+}
+
+.stock.available:before, .stock--available:before {
+    background: url(/dist/img/stock/in_stock.svg) center / contain no-repeat;
+}
+
+.stock.unavailable:before,.stock--unavailable:before {
+    background: url(/dist/img/stock/out_of_stock.svg) center/contain no-repeat
+}
+
+.stock.lowstock:before,.stock--lowstock:before {
+    background: url(/dist/img/stock/schedule.svg) center/contain no-repeat
+}

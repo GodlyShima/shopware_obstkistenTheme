@@ -1,0 +1,37 @@
+@include media-breakpoint-down(sm) {
+
+    .boxed:has(.product_mobile) {
+        padding: 0 !important;
+    }
+
+    .cms-element-buy-box {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .gallery-slider-item.is-cover, .gallery-slider-item.is-contain {
+        min-height: 350px !important;
+    }
+
+    .gallery-slider-thumbnails-col.is-left {
+        margin: 0;
+        display: none;
+    }
+
+    .gallery-slider-row {
+        margin-bottom: 0;
+    }
+
+    .gallery-slider {
+        border-bottom: none !important;
+        border-radius: 0;
+    }
+
+    .description-box {
+        border-radius: 0px;
+    }
+
+    .product-detail-form-container {
+        border-radius: 0px;
+    }
+}

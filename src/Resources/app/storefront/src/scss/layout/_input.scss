@@ -1,0 +1,51 @@
+.form-control {
+	border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgb(27 31 35 / 19%) 0px 0px 0px 1px !important;
+}
+
+.form-select {
+	border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgb(27 31 35 / 19%) 0px 0px 0px 1px !important;
+}
+
+.form-check-input:checked {
+	background-color: #167D51;
+  border-color: #0f5738;
+}
+
+.btn-primary {
+	background-color: #167D51;
+  border: 0;
+  border-radius: 8px;
+	transition: all 0.2s ease;
+
+	&:hover {
+		  background-color: #1d6d4b !important;
+			transition: all 0.2s ease;
+	}
+}
+
+.btn-link-inline {
+	color: #005a93;
+	transition: all 0.2 ease;
+
+	&:hover {
+		color: #3797d3;
+	}
+}
+
+.quantity-selector-group-input {
+	border: 1px solid #cbcbcb !important;
+	border-radius: 0px !important;
+	box-shadow: none !important;
+}
+
+.gallery-slider-thumbnails-controls-next {
+	box-shadow: none !important;
+}
+
+.gallery-slider-thumbnails-controls-prev {
+	box-shadow: none !important;
+}

@@ -1,0 +1,36 @@
+@include media-breakpoint-down(sm) {
+    .mobile-container {
+        .boxed {
+            padding-left: 14px;
+            padding-right: 14px;
+        }
+    }
+
+    .mobile-container-slider {
+        .boxed {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+}
+
+.container-main {
+    padding: 8px 0;
+}
+
+nav[aria-label="breadcrumb"] {
+    background: #ffffff;
+    padding: 1px;
+    border-radius: 8px;
+    padding-left: 15px;
+    border: 1px solid #ededed;
+}
+
+.breadcrumb {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.breadcrumb a.is-active {
+    color: #4c956c;
+}

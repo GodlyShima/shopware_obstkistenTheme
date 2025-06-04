@@ -1,0 +1,1 @@
+(()=>{new MutationObserver(e=>{e.forEach(e=>{e.addedNodes.forEach(e=>{if(1===e.nodeType&&e.classList.contains("cart-offcanvas")){let o=e.querySelector(".offcanvas-header"),a=e.querySelector(".offcanvas-body");!o&&a&&(a.style.borderRadius="8px")}})})}).observe(document.body,{childList:!0,subtree:!0}),console.log("ObstkistenTheme loaded | made by Len Knutzen")})();

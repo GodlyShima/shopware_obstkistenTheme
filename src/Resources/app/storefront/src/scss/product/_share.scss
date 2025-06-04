@@ -1,0 +1,44 @@
+.share-buttons {
+    position: relative;
+}
+
+.share-buttons__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    width: 100%;
+}
+
+.list-unstyled {
+		margin: 0;
+    list-style: none;
+    padding-top: 15px !important;
+    padding-bottom: 0px !important;
+    padding: 5px;
+}
+
+.share-buttons__label-name {
+    color: rgb(81, 81, 81);
+		font-size: 16px;
+}
+
+.share-buttons__item a {
+    color: rgb(51, 51, 51);
+    transition: .25s;
+}
+
+.share-buttons__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    text-decoration: none;
+    transition: opacity .25s;
+}
+
+.share-buttons__item .icon {
+    width: 1.4rem;
+    height: 1.4rem;
+}

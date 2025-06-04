@@ -1,0 +1,29 @@
+{% sw_extends '@Storefront/storefront/component/product/description.html.twig' %}
+
+
+{% block component_product_description_container %}
+<div class="product-detail-description tab-pane-container">
+
+    <div style="
+        font-size: 1.5rem;
+        padding-bottom: 10px;
+        font-weight: 600;
+        font-family: 'Poppins';
+    ">Produktinformationen</div>
+
+    {% block component_product_description_content %}
+        {% block component_product_description_content_text %}
+            <div class="product-detail-description-text"
+                 itemprop="description">
+                {{ product.translated.description|raw }}
+            </div>
+        {% endblock %}
+
+        {% block component_product_description_content_properties %}
+            {% if product.sortedProperties|length > 0 %}
+                {% sw_include '@Storefront/storefront/component/product/properties.html.twig' %}
+            {% endif %}
+        {% endblock %}
+    {% endblock %}
+</div>
+{% endblock %}

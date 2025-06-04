@@ -1,0 +1,114 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+
+{# @deprecated tag:v6.7.0 - variable `currentPage` will be removed #}
+{% if not feature('v6.7.0.0') %}
+    {% set currentPage = searchResult.page %}
+{% endif %}
+
+{# @deprecated tag:v6.7.0 - variable `paginationConfig` will not be json encoded #}
+{% if feature('v6.7.0.0') %}
+    {% set paginationConfig = { page: searchResult.page } %}
+{% else %}
+    {% set paginationConfig = { page: searchResult.page }|json_encode %}
+{% endif %}
+
+{% if disableEmptyFilter is not defined %}
+    {% set disableEmptyFilter = config('core.listing.disableEmptyFilterOptions') %}
+{% endif %}
+
+{% set listingPagination = {
+    sidebar: sidebar,
+    params: params,
+    dataUrl: dataUrl,
+    filterUrl: filterUrl,
+    disableEmptyFilter: disableEmptyFilter,
+    ariaLiveUpdates: ariaLiveUpdates,
+    snippets: {
+        resetAllButtonText: 'listing.filterPanelResetAll'|trans|sw_sanitize,
+        resetAllFiltersAriaLabel: 'listing.filterResetAllAriaLabel'|trans|sw_sanitize,
+        removeFilterAriaLabel: 'listing.filterRemoveAriaLabel'|trans|sw_sanitize
+    }
+} %}
+
+
+
+{% block product_listing %}
+    {% if page.category.media.path  != "" %}
+        <img style="margin-bottom: 20px;width: 100%;height: auto;border-radius: 8px;border: 1px solid #ededed;" src="/{{ page.category.media.path }}" alt="banner" />
+    {% endif %}
+    <div class="cat-title" style="font-size: 24px;font-weight: 700;margin-right: 10px;padding-bottom: 20px;color: #222222;">
+        {{ page.category.translated.name }} <span style="font-size: 14px;font-weight: 400;">({{ searchResult.total }} Artikel)</span>
+    </div>
+    <div class="cms-element-product-listing-wrapper"
+         data-listing-pagination="true"
+        {% if feature('v6.7.0.0') %}
+         data-listing-pagination-options="{{ paginationConfig|json_encode }}"
+        {% else %}
+         {# ludtwig-ignore html-string-quotation #}
+         data-listing-pagination-options='{{ paginationConfig }}'
+        {% endif %}
+         data-listing="true"
+         data-listing-options="{{ listingPagination|json_encode }}">
+        {% block element_product_listing_wrapper_content %}
+            <div class="cms-element-product-listing">
+
+                {% block element_product_listing_row %}
+                    {% if searchResult.total > searchResult.limit %}
+                        {% set ariaLiveText = 'listing.filterPanelAriaLivePaginated'|trans({
+                            '%count%': searchResult.elements|length,
+                            '%total%': searchResult.total}
+                        )|sw_sanitize %}
+                    {% else %}
+                        {% set ariaLiveText = 'listing.filterPanelAriaLive'|trans({'%count%': searchResult.total})|sw_sanitize %}
+                    {% endif %}
+
+                    <div class="row cms-listing-row js-listing-wrapper" data-aria-live-text="{{- ariaLiveText -}}"{% if searchResult.total > 0 %} role="list"{% endif %}>
+                        {% if searchResult.total > 0 %}
+                            {% block element_product_listing_col %}
+                                {% for product in searchResult %}
+                                    <div class="cms-listing-col {{ listingColumns }}" role="listitem">
+                                        {% block element_product_listing_box %}
+                                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                                layout: boxLayout,
+                                                displayMode: displayMode
+                                            } %}
+                                        {% endblock %}
+                                    </div>
+                                {% endfor %}
+                            {% endblock %}
+                        {% else %}
+                            {% block element_product_listing_col_empty %}
+                                <div class="cms-listing-col col-12">
+                                    {% block element_product_listing_col_empty_alert %}
+                                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                            type: 'info',
+                                            content: 'listing.emptyResultMessage'|trans|sw_sanitize
+                                        } %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% if searchResult.total > searchResult.limit %}
+                    {% block element_product_listing_pagination_nav_bottom %}
+                        {# @deprecated tag:v6.7.0 - variable `criteria` will be removed #}
+                        {% if feature('v6.7.0.0') %}
+                            {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                entities: searchResult,
+                                paginationLocation: 'bottom',
+                            } %}
+                        {% else %}
+                            {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                                entities: searchResult,
+                                criteria: searchResult.criteria,
+                                paginationLocation: 'bottom',
+                            } %}
+                        {% endif %}
+                    {% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

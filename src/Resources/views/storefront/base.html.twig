@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_header %}
+    {% sw_include '@ObstkistenTheme/storefront/layout/header/conversion-header.html.twig' %}
+    
+    <header class="header-main" style="padding-top: 10px;">
+        {% block base_header_inner %}
+            <div class="container">
+                {% sw_include '@Storefront/storefront/layout/header/header.html.twig' %}
+            </div>
+        {% endblock %}
+    </header>
+{% endblock %}

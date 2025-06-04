@@ -1,0 +1,57 @@
+{
+  "name": "ObstkistenTheme",
+  "author": "Len Knutzen",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@ObstkistenTheme"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/obstkisten-theme/obstkisten-theme.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "blocks": {
+      "Header": {
+        "label": {
+          "en-GB": "Header",
+          "de-DE": "Header"
+        }
+      }
+    },
+    "fields": {
+      "oo-header-topbar": {
+        "label": {
+          "en-GB": "Header Topbar",
+          "de-DE": "Header Topbar"
+        },
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "block": "Header"
+      },
+        "sw-image-lazy-loading": {
+        "value": false
+      },
+      "oo-header-background": {
+        "label": {
+          "en-GB": "Header Background Color",
+          "de-DE": "Header Hintergrundfarbe"
+        },
+        "type": "color",
+        "value": "#000000",
+        "editable": true,
+        "block": "Header"
+      }
+    }
+  }
+}

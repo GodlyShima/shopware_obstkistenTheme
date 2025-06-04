@@ -1,0 +1,28 @@
+.search-suggest-container {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+
+    &::after {
+        display: none;
+    }
+}
+
+.search-suggest-product {
+    border: 1px solid #ededed;
+    background: #fdfdfd;
+    padding: 5px 10px;
+    padding-left: 0px;
+    border-radius: 8px;
+    margin-bottom: 3px;
+}
+
+.search-suggest-total {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.search-suggest-product-price {
+    font-weight: 700;
+}

@@ -1,0 +1,16 @@
+.line-item-img {
+		border: 0;
+    box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(0 0 0 / 15%) 0px 0px 0px 1px;
+    border-radius: 8px;
+}
+
+.begin-checkout-btn {
+		border-radius: 8px;
+		background: #4C956C;
+		border: 0;
+
+		&:hover {
+			background-color: #2C6E49;
+			border: 0;
+		}
+}

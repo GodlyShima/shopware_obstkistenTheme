@@ -1,0 +1,85 @@
+.cms-element-buy-box.has-vertical-alignment {
+    display: block !important;
+}
+
+.cms-element-buy-box {
+    height: auto !important;
+    padding-bottom: 5px;
+}
+
+.product-detail-ordernumber-container {
+    color: #767676;
+    font-size: 13px;
+    padding-top: 2px;
+    margin-bottom: 0 !important;
+}
+
+.product-detail-price-container {
+    padding: 20px !important;
+    padding-top: 0px !important;
+    background: #fff !important;
+    border-radius: 0px !important;
+    border: 1px solid #ededed !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    padding-bottom: 0px !important;
+}
+
+.product-detail-price {
+    color: #2b2b2b !important;
+    font-family: "Poppins";
+    font-weight: 900 !important;
+    letter-spacing: -1px !important;
+}
+
+.product-oo-title {
+    font-size: 1.5rem !important;
+    letter-spacing: 0 !important;
+    line-height: 125% !important;
+    font-weight: 600 !important;
+    font-family: 'Poppins' !important;
+}
+
+.col-9 .d-grid .btn-buy {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border-radius: 8px !important;
+    background: #209f66;
+    font-family: "Poppins" !important;
+    font-weight: 600 !important;
+    font-size: 14px;
+}
+
+.product-detail-tabs-content {
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+    background: transparent !important;
+    box-shadow: unset !important;
+    font-size: 16px !important;
+}
+
+.base-slider .tns-nav, .base-slider .base-slider-dots {
+    background: #dfdfdf9c;
+    backdrop-filter: blur(15px);
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.base-slider .tns-nav .base-slider-dot:hover, .base-slider .tns-nav .base-slider-dot.tns-nav-active, .base-slider .tns-nav button:hover, .base-slider .tns-nav button.tns-nav-active, .base-slider .base-slider-dots .base-slider-dot:hover, .base-slider .base-slider-dots .base-slider-dot.tns-nav-active, .base-slider .base-slider-dots button:hover, .base-slider .base-slider-dots button.tns-nav-active {
+    background-color: #2eab73;
+}
+
+.base-slider .tns-nav .base-slider-dot, .base-slider .tns-nav button, .base-slider .base-slider-dots .base-slider-dot, .base-slider .base-slider-dots button {
+    background-color: #00000042;
+    backdrop-filter: blur(15px);
+    width: 25px;
+    padding: 3px;
+    border-radius: 8px;
+    margin: 0 4px;
+}
+
+.gallery-slider-item-container {
+    height: 600px !important;
+    min-height: 600px !important;
+}

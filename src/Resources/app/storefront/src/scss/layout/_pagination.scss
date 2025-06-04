@@ -1,0 +1,41 @@
+.page-item {
+    .page-link {
+        border: 1px solid #ededed;
+        border-left: 0;
+    }
+
+    &.page-first {
+        .page-link {
+            border-radius: 8px 0 0 8px;
+            border-right: 0;
+            border-left: 1px solid #ededed;
+        }
+    }
+
+    &.page-prev {
+        .page-link {
+            border-left: 0;
+        }
+    }
+
+    &.page-next {
+        .page-link {
+            border-left: 0;
+            border-right: 0;
+        }
+    }
+
+    &.page-last {
+        .page-link {
+            border-radius: 0 8px 8px 0;
+            border-left: 0;
+            border-right: 1px solid #ededed;
+        }
+    }
+
+    &.active {
+        .page-link {
+            background-color: #4c956c; // Optional: aktive Seite hervorheben
+        }
+    }
+}

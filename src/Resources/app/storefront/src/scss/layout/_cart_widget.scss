@@ -1,0 +1,33 @@
+.custom-cart-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon-wrapper {
+    position: relative;
+    margin-right: 10px;
+}
+
+.header-cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.cart-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.cart-text-line {
+    font-size: 14px;
+    color: #333;
+}
+
+.cart-text-line-left {
+	  font-size: 10px;
+    text-align: left;
+		color: #4f4f4f;
+}

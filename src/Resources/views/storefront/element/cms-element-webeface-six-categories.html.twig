@@ -1,0 +1,12 @@
+{% block cms_element_webeface_six_categories %}
+    <div class="cms-element-webeface-six-categories grid grid-cols-2 md:grid-cols-3 gap-4">
+        {% for category in categories %}
+            <a href="{{ path('frontend.navigation.page', { navigationId: category.id }) }}" class="block p-4 border rounded hover:shadow">
+                <div class="text-lg font-semibold">{{ category.translated.name }}</div>
+                {% if category.media %}
+                    <img src="{{ category.media.url }}" alt="{{ category.translated.name }}" class="mt-2 w-full h-auto">
+                {% endif %}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

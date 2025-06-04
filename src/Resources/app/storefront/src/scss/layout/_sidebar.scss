@@ -1,0 +1,33 @@
+.filter-panel-items-container {
+    background: #fff;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid #ededed;
+}
+
+.filter-panel-item {
+    margin-bottom: 2px;
+}
+
+.is--sidebar .filter-panel-item-dropdown {
+    border-radius: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    overflow: hidden;
+}
+
+.is--sidebar .filter-panel-item-toggle {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+    color: #2c6e49;
+}
+
+.is--sidebar .filter-panel-item-dropdown {
+    border: 0;
+}
+
+.is--sidebar .filter-panel-item-toggle[aria-expanded="true"] {
+    color: #2c6e49;
+}

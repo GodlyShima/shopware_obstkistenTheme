@@ -1,0 +1,101 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+
+{% block buy_widget_buy_form %}
+    {% if product.active %}
+        <div style="border: 1px solid #ededed;background: #fff;padding: 20px;border-top: 0px;border-radius: 0px 0px 8px 8px;" class="product-detail-form-container">
+            {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block buy_widget_price %}
+
+<div id="description-box" class="description-box" style="border-bottom: 0 !important;background: #fff;padding: 20px;border-radius: 8px 8px 0px 0px;border: 1px solid #ededed;">
+
+    <div class="product-oo-title" style="font-size: 1.2rem;letter-spacing: 0;line-height: 125%;font-weight: 600;">
+        {{ product.translated.name }}
+    </div>
+
+    {% if product.productNumber %}
+													<div class="product-detail-ordernumber-container">
+															{% block buy_widget_ordernumber_label %}
+																	<span class="product-detail-ordernumber-label">
+																			{{ 'detail.productNumberLabel'|trans|sw_sanitize }}
+																	</span>
+															{% endblock %}
+
+															{% block buy_widget_ordernumber %}
+																	<meta itemprop="productID"
+																				content="{{ product.id }}">
+																	<span class="product-detail-ordernumber"
+																				itemprop="sku">
+																			{{ product.productNumber }}
+																	</span>
+															{% endblock %}
+													</div>
+											{% endif %}
+
+</div>
+
+<div style="background: #fff;padding:20px;padding-top:0px;padding-bottom:15px;border: 1px solid #ededed;border-top:0px;border-bottom:0px;">
+    <div style="display:flex;flex-direction: column;gap: 6px;">
+        <div style="font-size: 1rem;font-weight: 800;">Lieferinformationen</div>
+        <div class="stock-wrapper">
+            {% if product.available == true && product.availableStock > 0 %}
+                <div class="stock stock--available" title="Verfügbarkeit">Auf Lager</div>
+            {% elseif product.available == true && product.availableStock <= 30 && product.availableStock > 0 %}
+                <div class="stock stock--lowstock" title="Nur noch wenige verfügbar">Nur noch wenige verfügbar</div>
+            {% else %}
+                <div class="stock stock--unavailable" title="Derzeit nicht verfügbar">Derzeit nicht verfügbar</div>
+            {% endif %}
+        </div>
+        <span class="delivery-time">Voraussichtliche Lieferzeit: {{ product.deliveryTime.translated.name }}</span>
+    </div>
+</div>
+
+<div class="product-detail-price-container">
+    {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-price.html.twig' %}
+
+    <div class="product-detail-tax-container">
+        {% if context.taxState == 'gross' %}
+            {% set taxText = 'general.grossTaxInformation'|trans|sw_sanitize %}
+        {% else %}
+            {% set taxText = 'general.netTaxInformation'|trans|sw_sanitize %}
+        {% endif %}
+        <span class="price-brutto show-price" style="color:rgb(81, 81, 81);">Steuern inklusive.</span>
+        <p class="product-detail-tax" style="margin-bottom: 0;">
+            {% block buy_widget_tax_link %}
+                {% set cmsPath = path('frontend.cms.page', { id: config('core.basicInformation.shippingPaymentInfoPage') }) %}
+                <button style="color:rgb(21,102,224);text-decoration: none;" class="btn btn-link-inline product-detail-tax-link"
+                        type="button"
+                        data-ajax-modal="true"
+                        data-url="{{ cmsPath }}">
+                    Der Versand
+                </button>
+                <span style="color:rgb(81, 81, 81);"> wird an der Kasse berechnet.</span>
+            {% endblock %}
+        </p>
+    </div>
+</div>
+
+<script>
+    function expandDescription() {
+        const wrapper = document.getElementById('description-content-wrapper');
+        const fade = document.getElementById('fade-overlay');
+
+        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+        wrapper.style.opacity = '1';
+        fade.style.opacity = '0';
+
+        setTimeout(() => {
+            wrapper.style.maxHeight = 'none'; // Für dynamischen Content
+            fade.style.display = 'none';
+        }, 400); // = Dauer der langsamsten Transition
+    }
+</script>
+{% endblock %}
+
+{% block buy_widget_tax %}{% endblock %}
+
+
+{% block buy_widget_ordernumber_container %}{% endblock %}

@@ -1,0 +1,48 @@
+@mixin chp-wrapper() {
+    display: flex;
+
+    .container {
+        display: flex;
+        padding: 10px 0;
+    }
+}
+
+.chp-desktop-wrapper, .chp-tablet-wrapper {
+}
+
+.chp-smartphone-wrapper {
+    @include chp-wrapper();
+
+    .chp-item {
+        text-align: center;
+        width: 272px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .chp-smartphone-wrapper {
+    }
+
+    .chp-tablet-wrapper {
+        @include chp-wrapper();
+
+        .chp-item {
+            text-align: center;
+            width: 272px;
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .chp-tablet-wrapper {
+    }
+
+    .chp-desktop-wrapper {
+        @include chp-wrapper();
+
+        .chp-item {
+            text-align: center;
+            width: 272px;
+        }
+    }
+}

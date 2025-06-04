@@ -1,0 +1,14 @@
+.account-menu-dropdown {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 8px;
+    border: 1px solid rgb(237, 237, 237);
+}
+
+.account-menu-login-button {
+    background: #4C956C !important;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: 2C6E49 !important;
+    }
+}

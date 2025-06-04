@@ -1,0 +1,57 @@
+/*
+Override variable defaults
+==================================================
+This file is used to override default SCSS variables from the Shopware Storefront or Bootstrap.
+
+Because of the !default flags, theme variable overrides have to be declared beforehand.
+https://getbootstrap.com/docs/5.3/customize/sass/#variable-defaults
+*/
+
+.cms-breadcrumb {
+    display: none !important;
+}
+
+.cms-block img, .header-logo-main-img {
+    height: 100% !important;
+}
+
+.dropdown-toggle::after {
+	display: inline-block !important;
+    margin-left: 0 !important;
+    vertical-align: 0 !important;
+    content: "" !important;
+    border-top: 0 !important;
+    border-radius: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+}
+
+.is-tanmar-infinite-scrolling.is-ctl-navigation .tanmar-infinity-scrolling-button-bar span, .is-tanmar-infinite-scrolling.is-ctl-search .tanmar-infinity-scrolling-button-bar span {
+    background: #2C6E49 !important;
+}
+
+.btn-buy {
+    --bs-btn-bg: #3c7c65 !important;
+    --bs-btn-border-color: #3c7c65 !important;
+    background: #3c7c65 !important;
+    border-radius: 8px !important; 
+    transition: all 0.2s ease !important;
+}
+
+.btn-buy:hover {
+    color: var(--bs-btn-hover-color) !important;
+    text-decoration: none !important;
+    background-color: #4b977c !important;
+    border-color: #4b977c !important;
+    transition: all 0.2s ease !important;
+}
+
+.cms-element-product-listing-actions {
+    flex-direction: row-reverse;
+}
+
+.loader {
+    color: #4C956C !important;
+}
+

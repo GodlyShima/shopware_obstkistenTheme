@@ -1,0 +1,115 @@
+.megamenu {
+    border-bottom: none;
+}
+
+.megamenu-foldout {
+    background: transparent;
+    box-shadow: none;
+}
+
+.megamenu-subs {
+    background: #fff;
+    border-radius: 0px 8px 8px 8px;
+}
+
+.megamenu .megamenu-close {
+    top: 5px;
+    right: 25px;
+    background: transparent;
+
+    &::before {
+        background: #838383;
+    }
+
+    &::after {
+        background: #838383;
+    }
+}
+
+.megamenu-item.active > button, .megamenu-item.active > a {
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.megamenu-sub-item:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.megamenu-sub-item:last-child {
+    border-radius: 0 0 0 8px;
+}
+
+.megamenu .is-open {
+    border-radius: 8px;
+}
+
+.megamenu-sub-item > a:hover, .megamenu-sub-item > button:hover {
+    text-decoration: none !important;
+}
+
+.megamenu-sub-1 {
+    padding: 0;
+    border-radius: 0px 0px 0px 8px;
+}
+
+.megamenu-sub-2 {
+    border-radius: 0px 8px 8px 0px;
+}
+
+.megamenu-sub-2 ul span {
+    cursor: pointer;
+    font-weight: 400;
+}
+.megamenu-item.active > button, .megamenu-item.active > a {
+    border-radius: 8px !important;
+    margin-bottom: 0px;
+}
+
+.megamenu-item > button, .megamenu-item > a {
+    margin-bottom: 0px;
+    font-weight: 500 !important;
+}
+
+.megamenu-list > li.megamenu-foldout:nth-of-type(2) .megamenu-subs {
+    border-radius: 0px 8px 8px 8px;
+}
+
+.navigation-list > li.active > button, .navigation-list > li.active > a, .navigation-list > li a:hover, .megamenu-item.active > button, .megamenu-item.active > a, .megamenu-item a:hover {
+    color: #313131;
+    background-color: transparent;
+    border-radius: 8px 8px 0px 0px !important;
+}
+  
+.megamenu-list > li.megamenu-item:first-of-type > a.megamenu-link {
+    //background-color: #3B7C65;
+    font-weight: 600 !important;
+    color: #fff;
+    border-radius: 8px;
+    background: #3c7c65;
+    border: 0 none;
+    margin-bottom: 0px !important;
+    
+    .icon {
+        color: #fff !important;
+    }
+  }
+  
+
+.navigation-list > li > a, .navigation-list > li > button, .megamenu-item > a, .megamenu-item > button {
+      color: #313131;
+}
+
+.megamenu-sub-item > a, .megamenu-sub-item > span, .megamenu-sub-item > button {
+    padding: 10px;
+    border-radius: 8px;
+    background: #5bab8e;
+    margin: 8px;
+    font-size: 14px;
+    color: #292929;
+    font-weight: 700;
+    width: auto;
+}
+
+.megamenu-sub-item.is-open {
+    background-color: transparent !important;
+}

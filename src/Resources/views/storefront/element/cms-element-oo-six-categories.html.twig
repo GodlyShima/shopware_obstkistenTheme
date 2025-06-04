@@ -1,0 +1,37 @@
+{% block element_oo_six_categories %}
+    {% set config = element.config %}
+
+    {% set categoryKeys = [
+        'first_category',
+        'second_category',
+        'third_category',
+        'fourth_category',
+        'fifth_category',
+        'sixth_category'
+    ] %}
+
+    <div class="six-categories-wrapper">
+        <div class="category-grid">
+            {% for key in categoryKeys %}
+                {% set categoryId = config[key] is defined ? config[key].value : null %}
+
+                {% if categoryId %}
+                    {% set category = getCategoryWithMedia(categoryId) %}
+
+                    <div class="category-item">
+                            {% if category %}
+                                <a href="{{ path('frontend.navigation.page', { navigationId: category.id }) }}" class="category-card">
+                                    {% if category.media %}
+                                        <img width="322" height="436" src="{{ category.media.url }}" alt="{{ category.translated.name }}" class="category-image" loading="lazy"/>
+                                    {% else %}
+                                        <div class="category-image placeholder">Kein Bild</div>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

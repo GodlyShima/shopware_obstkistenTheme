@@ -1,0 +1,11 @@
+!function(){var e={916:function(){Shopware.Component.register("sw-cms-el-webeface-six-categories",{template:"<div class='sw-cms-el-webeface-six-categories'>Frontend Placeholder: 6 Kategorien</div>",mixins:[Shopware.Mixin.getByName("cms-element")],created(){this.createdComponent()},methods:{createdComponent(){this.initElementConfig("webeface-six-categories"),this.initElementData("webeface-six-categories")}}})},362:function(){let{Component:e,Mixin:t}=Shopware;e.register("sw-cms-el-config-webeface-six-categories",{template:`
+        <div>
+            <sw-entity-multi-id-select
+                :value="element.config.categories.value"
+                :repository="categoryRepository"
+                :criteria="criteria"
+                label="Kategorien ausw\xe4hlen"
+                @element-update="onCategoryChange"
+            />
+        </div>
+    `,inject:["repositoryFactory"],mixins:[t.getByName("cms-element")],props:{element:{type:Object,required:!0}},data(){return{categoryRepository:null,criteria:new Shopware.Data.Criteria}},created(){this.initElementConfig("webeface-six-categories"),this.categoryRepository=this.repositoryFactory.create("category")},methods:{onCategoryChange(e){this.element.config.categories.value=e,this.$emit("element-update",element)}}})},196:function(){Shopware.Component.register("sw-cms-el-preview-webeface-six-categories",{template:"<div style='padding: 1rem; background: #f3f4f6; border: 1px solid #ccc;'>Preview: 6 Kategorien</div>"})}},t={};function i(o){var s=t[o];if(void 0!==s)return s.exports;var r=t[o]={exports:{}};return e[o](r,r.exports,i),r.exports}i.p="bundles/obstkistentheme/",window?.__sw__?.assetPath&&(i.p=window.__sw__.assetPath+"/bundles/obstkistentheme/"),i(916),i(362),i(196),Shopware.Service("cmsService").registerCmsElement({name:"webeface-six-categories",label:"6 Kategorien",component:"sw-cms-el-webeface-six-categories",configComponent:"sw-cms-el-config-webeface-six-categories",previewComponent:"sw-cms-el-preview-webeface-six-categories",defaultConfig:{categories:{source:"static",value:[]}}}),console.log("blocks & elements geladen")}();

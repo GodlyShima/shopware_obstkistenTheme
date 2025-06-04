@@ -1,0 +1,17 @@
+.delivery-time {
+    display: inline-flex;
+    text-decoration: none;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+
+		&::before {
+			content: '';
+			display: block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			flex-shrink: 0;
+			background: url(/dist/img/stock/delivery_time.svg) center / contain no-repeat;
+		}
+}
